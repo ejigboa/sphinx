@@ -7,6 +7,19 @@ from typing import TYPE_CHECKING
 
 from sphinx import __display_version__
 
+
+# pull in the defaults from sphinx‑astropy
+from sphinx_astropy.conf import *
+
+# then update the default autodoc options
+autodoc_default_options.update({
+    'members': True,
+    'undoc-members': True,
+    'imported-members': True,       # <-- make sure this is set
+    'special-members': False,
+    'private-members': False,
+})
+
 os.environ['SPHINX_AUTODOC_RELOAD_MODULES'] = '1'
 
 extensions = [
